@@ -36,7 +36,10 @@ from backend.langfuse_client import langfuse
 # VIDEO -> AUDIO
 # ==========================================================
 #FFMPEG_PATH = r"C:\Users\Yashwanth Boya\Downloads\ffmpeg-8.1.2-essentials_build\ffmpeg-8.1.2-essentials_build\bin\ffmpeg.exe"
-
+if shutil.which("ffmpeg") is None:
+    raise RuntimeError(
+        "FFmpeg is not installed. Add a packages.txt file containing 'ffmpeg' and redeploy."
+    )
 def extract_audio(video_path: str):
 
     audio_path = os.path.splitext(video_path)[0] + ".wav"
