@@ -42,6 +42,8 @@ AccountaAI/
 └── README.md
 
 Architecture :
+
+
 <img width="624" height="500" alt="image" src="https://github.com/user-attachments/assets/e6d3f6e7-c112-4e51-8873-2a38da7fdf44" />
 
 ## Future Enhancements
