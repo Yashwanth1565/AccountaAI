@@ -34,6 +34,8 @@ if "analysis" not in st.session_state:
 if "transcript" not in st.session_state:
     st.session_state.transcript = ""
 
+os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+
 # ==========================
 # PREMIUM COLOR SYSTEM UI
 # ==========================
