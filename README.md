@@ -28,18 +28,7 @@ AccountaAI is an AI-powered meeting intelligence platform that converts meeting 
 - Resend
 - Langfuse
 
-## Project Structure
 
-
-AccountaAI/
-│
-├── app.py
-├── backend/
-├── uploads/
-├── transcripts/
-├── chroma_db/
-├── requirements.txt
-└── README.md
 
 Architecture :
 
