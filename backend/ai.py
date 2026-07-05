@@ -15,6 +15,9 @@ import os
 
 import ffmpeg
 import whisper
+import shutil
+
+FFMPEG_PATH = shutil.which("ffmpeg")
 
 from google import genai
 from google.genai import types
@@ -32,7 +35,7 @@ from backend.langfuse_client import langfuse
 # ==========================================================
 # VIDEO -> AUDIO
 # ==========================================================
-FFMPEG_PATH = r"C:\Users\Yashwanth Boya\Downloads\ffmpeg-8.1.2-essentials_build\ffmpeg-8.1.2-essentials_build\bin\ffmpeg.exe"
+#FFMPEG_PATH = r"C:\Users\Yashwanth Boya\Downloads\ffmpeg-8.1.2-essentials_build\ffmpeg-8.1.2-essentials_build\bin\ffmpeg.exe"
 
 def extract_audio(video_path: str) -> str:
     """
@@ -51,7 +54,7 @@ def extract_audio(video_path: str) -> str:
         )
         .overwrite_output()
         .run(
-            cmd=FFMPEG_PATH,
+            cmd=FFMPEG_PATH if FFMPEG_PATH else "ffmpeg",
             quiet=True
         )
     )
