@@ -1,5 +1,5 @@
 streamlit
-google-genai
+google-generativeai
 openai-whisper
 ffmpeg-python
 langchain
@@ -8,10 +8,8 @@ langchain-google-genai
 chromadb
 sentence-transformers
 pydantic
-python-dotenv
-langfuse
+langfuse==3.2.3
 apscheduler
 resend
 plotly
 pandas
-langfuse==3.2.3
