@@ -1,5 +1,4 @@
 # AccountaAI 
-# AccountaAI
 
 ## Overview
 
