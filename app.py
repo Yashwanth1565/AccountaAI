@@ -26,9 +26,10 @@ st.set_page_config(
     layout="wide"
 )
 
-if "scheduler_started" not in st.session_state:
-    start_scheduler()
-    st.session_state.scheduler_started = True
+if not os.getenv("STREAMLIT_SERVER_HEADLESS"):
+    if "scheduler_started" not in st.session_state:
+        start_scheduler()
+        st.session_state.scheduler_started = True
 
 if "analysis" not in st.session_state:
     st.session_state.analysis = None
