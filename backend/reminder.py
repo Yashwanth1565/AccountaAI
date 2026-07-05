@@ -2,6 +2,7 @@ from datetime import datetime
 
 import resend
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.base import SchedulerAlreadyRunningError
 
 from backend.config import RESEND_API_KEY
 from backend.database import db
@@ -90,25 +91,24 @@ def check_due_reminders():
 
 
 def start_scheduler():
+    """Start the reminder scheduler exactly once."""
 
-    if not scheduler.running:
-
+    # Don't add duplicate jobs
+    if scheduler.get_job("meeting_reminders") is None:
         scheduler.add_job(
-
             check_due_reminders,
-
             trigger="interval",
-
             minutes=1,
-
             id="meeting_reminders",
-
-            replace_existing=True
-
+            replace_existing=True,
         )
 
-        scheduler.start()
-
-        print("="*50)
-        print("Reminder Scheduler Started")
-        print("="*50)
+    # Don't start an already-running scheduler
+    try:
+        if not scheduler.running:
+            scheduler.start()
+            print("=" * 50)
+            print("Reminder Scheduler Started")
+            print("=" * 50)
+    except SchedulerAlreadyRunningError:
+        pass
