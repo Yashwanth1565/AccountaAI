@@ -11,7 +11,7 @@ import streamlit as st
 from backend.pipeline import pipeline
 from backend.rag import rag
 from backend.reminder import start_scheduler
-from apscheduler.schedulers.base import SchedulerAlreadyRunningError
+
 
 
 # ==========================
@@ -27,10 +27,7 @@ st.set_page_config(
 )
 
 if "scheduler_started" not in st.session_state:
-    try:
-        start_scheduler()
-    except SchedulerAlreadyRunningError:
-        pass
+    start_scheduler()
     st.session_state.scheduler_started = True
 
 if "analysis" not in st.session_state:
