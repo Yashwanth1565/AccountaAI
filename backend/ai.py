@@ -37,26 +37,16 @@ from backend.langfuse_client import langfuse
 # ==========================================================
 #FFMPEG_PATH = r"C:\Users\Yashwanth Boya\Downloads\ffmpeg-8.1.2-essentials_build\ffmpeg-8.1.2-essentials_build\bin\ffmpeg.exe"
 
-def extract_audio(video_path: str) -> str:
-    """
-    Extract audio from a video file and convert it to 16kHz mono WAV.
-    """
+def extract_audio(video_path: str):
 
     audio_path = os.path.splitext(video_path)[0] + ".wav"
 
     (
         ffmpeg
         .input(video_path)
-        .output(
-            audio_path,
-            ac=1,
-            ar=16000
-        )
+        .output(audio_path, ac=1, ar=16000)
         .overwrite_output()
-        .run(
-            cmd=FFMPEG_PATH if FFMPEG_PATH else "ffmpeg",
-            quiet=True
-        )
+        .run(quiet=True)
     )
 
     return audio_path
