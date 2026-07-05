@@ -37,10 +37,10 @@ if "analysis" not in st.session_state:
 if "transcript" not in st.session_state:
     st.session_state.transcript = ""
 
-if "GEMINI_API_KEY" in st.secrets:
-    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+if "GOOGLE_API_KEY" in st.secrets:
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 else:
-    st.error("GEMINI_API_KEY is missing. Please configure it in Streamlit Secrets.")
+    st.error("GOOGLE_API_KEY is missing. Please configure it in Streamlit Secrets.")
     st.stop()
 # ==========================
 # PREMIUM COLOR SYSTEM UI
