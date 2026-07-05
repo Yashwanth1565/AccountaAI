@@ -63,7 +63,10 @@ AUDIO_EXTENSIONS = [
 # Gemini
 # ---------------------------------------------------------
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = (
+    os.getenv("GOOGLE_API_KEY")
+    or os.getenv("GEMINI_API_KEY")
+)
 
 GEMINI_MODEL = "gemini-2.5-flash"
 
